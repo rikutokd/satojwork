@@ -1,163 +1,88 @@
 <html>
 <head>
-    <title>Satoj Photography</title>
+    <title>satoj Photography</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
-        .dot {
-            height: 10px;
-            width: 10px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            margin: 0 5px;
-            cursor: pointer;
-        }
-        .active-dot {
-            background-color: #717171;
-        }
-        .slider {
-            position: relative;
-            width: 100%;
-            max-width: 1500px; /* Adjusted for 3 images */
-            margin: auto;
-        }
-        .slides {
-            display: none;
-            justify-content: space-between;
-            flex-wrap: nowrap;
-        }
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-        @keyframes fade {
-            from {opacity: .4}
-            to {opacity: 1}
-        }
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
+        .header {
+            background-color: #111827;
             color: white;
+            padding: 20px 0;
+        }
+        .header a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .logo {
+            font-size: 1.75rem;
             font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
+            letter-spacing: 1px;
+        }
+        .footer {
+            background-color: #1f2937;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .carousel-control {
+            font-size: 24px;
+            color: #ffffff;
             user-select: none;
         }
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
+        .image-gallery {
+            display: flex;
+            overflow-x: auto;
+            gap: 16px;
+            padding: 20px 0;
         }
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-        img {
-            width: 32%; /* Adjusted for 3 images */
-            margin: 0 1%; /* Small margin between images */
+        .image-gallery img {
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="bg-white">
-    <header class="flex justify-between items-center px-10 py-4">
-        <div class="text-sm font-semibold">satoj</div>
-        <nav>
-            <ul class="flex space-x-8 text-sm font-semibold">
-                <li><a href="#" class="text-gray-800 hover:text-gray-600">Home</a></li>
-                <li><a href="#" class="text-gray-800 hover:text-gray-600">Services</a></li>
-                <li><a href="#" class="text-gray-800 hover:text-gray-600">Portfolio</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="flex justify-between items-center px-10">
-        <div class="w-1/2">
-            <h1 class="text-6xl font-bold">satoj</h1>
-            <p class="mt-6 text-lg text-gray-700">
-                Award-Winning Photography. Capturing the perfect moment is not easy, but I have dedicated my life to it. My photography is not just about taking pictures, it's about telling a story. With over 10 years of experience, I specialize in sports photography, and I have captured some of the most memorable moments in sports history. I am a member of the Japan Sports Photography Association and have won multiple awards for my work.
-            </p>
-            <button class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Hire me
-            </button>
-        </div>
-        <div class="w-1/2 grid grid-cols-3 gap-4">
-            <img src="https://placehold.co/300x300" alt="A serene lake with clear blue skies" class="col-span-2 row-span-2">
-            <img src="https://placehold.co/150x150" alt="A mountainous landscape with a winding road">
-            <img src="https://placehold.co/150x150" alt="A coastal scene with rugged cliffs">
-            <img src="https://placehold.co/150x150" alt="A desert road stretching into the distance">
-            <img src="https://placehold.co/150x150" alt="A reflective lake with mountains in the background">
+<body class="bg-gray-100">
+    <div class="header">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="logo">satoj</div>
+            <div class="space-x-4">
+                <a href="#" class="hover:underline">Home</a>
+                <a href="#" class="hover:underline">Services</a>
+                <a href="#" class="hover:underline">Portfolio</a>
+            </div>
         </div>
     </div>
-    <div class="slider">
-        <!-- Slide 1 -->
-        <div class="slides fade">
-            <img src="https://placehold.co/500x300" alt="Scenic view of a beach with people and clear blue water, surrounded by white rocky cliffs">
-            <img src="https://placehold.co/500x300" alt="Interior view featuring two rattan chairs, one rocking chair, and hanging plants with a bright window">
-            <img src="https://placehold.co/500x300" alt="A cozy corner with a wooden chair, white cushions, and a small wooden table with magazines and decorative items">
-        </div>
-        <!-- Slide 2 -->
-        <div class="slides fade">
-            <img src="https://placehold.co/500x300" alt="Another scenic view of a beach">
-            <img src="https://placehold.co/500x300" alt="Another interior view with modern furniture">
-            <img src="https://placehold.co/500x300" alt="Another cozy corner with different decor">
-        </div>
-        <!-- Slide 3 -->
-        <div class="slides fade">
-            <img src="https://placehold.co/500x300" alt="Additional scenic view">
-            <img src="https://placehold.co/500x300" alt="Additional interior view">
-            <img src="https://placehold.co/500x300" alt="Additional cozy corner view">
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <div class="flex justify-center mt-4">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
+
+    <div class="text-center p-8">
+        <h1 class="text-4xl font-bold mb-4">satoj Photography</h1>
+        <p class="mb-6 text-lg">Specializing in sports photography, capturing dynamic and impactful moments in sports history. With over a decade of experience, I bring stories to life through my lens.</p>
     </div>
 
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
+    <div class="container mx-auto px-4">
+        <div class="flex justify-center space-x-2 mb-8">
+            <span class="carousel-control cursor-pointer">&lt;</span>
+            <div class="image-gallery">
+                <img src="https://placehold.co/500x300" alt="Dynamic sports action shot">
+                <img src="https://placehold.co/500x300" alt="Intense moment in sports captured">
+                <img src="https://placehold.co/500x300" alt="Celebratory sports event photograph">
+            </div>
+            <span class="carousel-control cursor-pointer">&gt;</span>
+        </div>
+    </div>
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("slides");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active-dot", "");
-            }
-            slides[slideIndex-1].style.display = "flex";
-            dots[slideIndex-1].className += " active-dot";
-        }
-    </script>
-    <div class="bg-white p-6 rounded-lg shadow-lg">
-        <h1 class="text-gray-800 text-lg font-semibold mb-4">satoj</h1>
-        <div class="text-gray-600">
-            <p class="mb-2">Phone</p>
-            <p class="mb-4">987 654 3210</p>
-            <p class="mb-2">email</p>
-            <p>contact@example.com</p>
+    <div class="footer">
+        <h2 class="text-2xl font-bold mb-4">Contact satoj</h2>
+        <div class="mb-4">
+            <div>Phone</div>
+            <div>987 654 3210</div>
+        </div>
+        <div>
+            <div>Email</div>
+            <div>contact@satojphotography.com</div>
         </div>
     </div>
 </body>
