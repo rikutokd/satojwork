@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
         { src: "image/バスケポートフォリオ用/2.JPG", alt: "basketball 2" },
         { src: "image/バスケポートフォリオ用/3.JPG", alt: "basketball 3" },
         { src: "image/バスケポートフォリオ用/4.JPG", alt: "basketball 4" },
-        { src: "image/バスケポートフォリオ用/5.JPG", alt: "basketball 5" },
         { src: "image/バスケポートフォリオ用/6.JPG", alt: "basketball 6" },
         { src: "image/バスケポートフォリオ用/7.JPG", alt: "basketball 7" },
         { src: "image/バスケポートフォリオ用/8.JPG", alt: "basketball 8" },
@@ -56,7 +55,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let loadedImages = 0;
 
-    images.forEach((image, index) => {
+    function displayImages() {
+        images.forEach(image => {
+            const div = document.createElement('div');
+            div.classList.add('overflow-hidden');
+
+            const a = document.createElement('a');
+            a.href = image.src;
+            a.setAttribute('data-lightbox', 'image-set');
+
+            const img = document.createElement('img');
+            img.src = image.src;
+            img.alt = image.alt;
+
+            a.appendChild(img);
+            div.appendChild(a);
+            imageGallery.appendChild(div);
+        });
+        document.querySelector('.image-gallery').style.display = 'grid';
+    }
+
+    images.forEach((image) => {
         const img = new Image();
         img.src = image.src;
         img.alt = image.alt;
@@ -75,20 +94,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 displayImages();
             }
         };
-
-        const div = document.createElement('div');
-        div.classList.add('overflow-hidden');
-
-        const a = document.createElement('a');
-        a.href = image.src;
-        a.setAttribute('data-lightbox', 'image-set');
-
-        a.appendChild(img);
-        div.appendChild(a);
-        imageGallery.appendChild(div);
     });
-
-    function displayImages() {
-        document.querySelector('.image-gallery').style.display = 'grid';
-    }
 });
