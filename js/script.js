@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     const imageGallery = document.getElementById('imageGallery');
+    const loaderContainer = document.getElementById('loader-container');
 
     let loadedImages = 0;
 
@@ -72,9 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
             div.appendChild(a);
             imageGallery.appendChild(div);
         });
-        document.getElementById('loader').style.display = 'none';
-        document.querySelector('.image-gallery').style.display = 'grid';
-
+        loaderContainer.style.display = 'none';
+        imageGallery.style.display = 'grid';
+        document.body.style.background = 'none';
     }
 
     images.forEach((image) => {
