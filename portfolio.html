@@ -14,13 +14,6 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .header {
-            text-align: left;
         }
         .footer {
             background-color: #FAFAFB;
@@ -32,16 +25,16 @@
             display: none; /* 初期は非表示 */
         }
         .loader-container {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.8);
-        z-index: 1000;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
         }
         .loader {
             border: 16px solid #f3f3f3; /* Light grey */
@@ -59,7 +52,7 @@
     </style>
 </head>
 <body class="bg-white text-gray-800">
-    <header class="flex justify-between items-center px-8 py-4">
+    <header class="flex justify-start items-center px-8 py-4">
         <nav>
             <ul class="flex space-x-4">
                 <li><a href="index.html" class="text-gray-800 hover:text-gray-600">Home</a></li>
