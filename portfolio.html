@@ -1,10 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="css\lightbox.css" rel="stylesheet">
     <script src="js\lightbox-plus-jquery.js"></script>
+    <script src="js\script.js"></script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -14,6 +18,9 @@
             color: #4b5563;
             padding: 30px 0;
             text-align: center;
+        }
+        .image-gallery {
+            display: none; /* 初期は非表示 */
         }
     </style>
 </head>
@@ -43,258 +50,8 @@
     </main>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-3 gap-4">
-
-            <div class="overflow-hidden">
-                <a href=image\スケート１.JPG data-lightbox="image-set">
-                    <img src="image\スケート１.JPG" alt="skate1">
-                </a> 
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\スケート２.JPG data-lightbox="image-set">
-                    <img src="image\スケート２.JPG" alt="skate2">
-                </a>
-            </div>
-
-            <div class="overflow-hidden">
-                <a href=image\スケート４.JPG data-lightbox="image-set">
-                    <img src="image\スケート４.JPG" alt="skate4">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\トライアスロン１.JPG data-lightbox="image-set">
-                    <img src="image\トライアスロン１.JPG" alt="triathlon1">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\トライアスロン２.JPG data-lightbox="image-set">
-                    <img src="image\トライアスロン２.JPG" alt="triathlon2">
-                </a>
-            </div>
-
-            <div class="overflow-hidden">
-                <a href=image\トライアスロン３.jpg data-lightbox="image-set">
-                    <img src="image\トライアスロン３.jpg" alt="triathlon3">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\トライアスロン４.JPG data-lightbox="image-set">
-                    <img src="image\トライアスロン４.JPG" alt="triathlon4">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\ボート１.JPG data-lightbox="image-set">
-                    <img src="image\ボート１.JPG" alt="boat1">
-                </a>
-            </div>
-            
-            <div class="overflow-hidden">
-                <a href=image\ボート２.JPG data-lightbox="image-set">
-                    <img src="image\ボート２.JPG" alt="boat2">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\ボート３.JPG data-lightbox="image-set">
-                    <img src="image\ボート３.JPG" alt="boat3">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\ボート４.JPG data-lightbox="image-set">
-                    <img src="image\ボート４.JPG" alt="boat4">
-                </a>
-            </div>
-            
-            <div class="overflow-hidden">
-                <a href=image\ホッケー１.JPG data-lightbox="image-set">
-                    <img src="image\ホッケー１.JPG" alt="hockey1">
-                </a>              
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\ホッケー２.JPG data-lightbox="image-set">
-                    <img src="image\ホッケー２.JPG" alt="hockey2">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\ホッケー３.JPG data-lightbox="image-set">
-                    <img src="image\ホッケー３.JPG" alt="hockey3">
-                </a>
-            </div>
-            
-            <div class="overflow-hidden">
-                <a href=image\ラグビー１.JPG data-lightbox="image-set">
-                    <img src="image\ラグビー１.JPG" alt="rugby1">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\ラグビー２.JPG data-lightbox="image-set">
-                    <img src="image\ラグビー２.JPG" alt="rugby2">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\ラグビー３.JPG data-lightbox="image-set">
-                    <img src="image\ラグビー３.JPG" alt="rugby3">
-                </a>
-            </div>
-
-            <div class="overflow-hidden">
-                <a href=image\ラグビー４.JPG data-lightbox="image-set">
-                    <img src="image\ラグビー４.JPG" alt="rugby4">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\ラグビー５.JPG data-lightbox="image-set">
-                    <img src="image\ラグビー５.JPG" alt="rugby5">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\ラグビー６.JPG data-lightbox="image-set">
-                    <img src="image\ラグビー６.JPG" alt="rugby6">
-                </a>
-            </div>
-
-            <div class="overflow-hidden">
-                <a href=image\ラグビー７.JPG data-lightbox="image-set">
-                    <img src="image\ラグビー７.JPG" alt="rugby7">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\水泳１.JPG data-lightbox="image-set">
-                    <img src="image\水泳１.JPG" alt="swimming1">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\水泳２.JPG data-lightbox="image-set">
-                    <img src="image\水泳２.JPG" alt="swimming2">
-                </a>
-            </div>
-
-            <div class="overflow-hidden">
-                <a href=image\水泳３.JPG data-lightbox="image-set">
-                    <img src="image\水泳３.JPG" alt="swimming3">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\水泳４.JPG data-lightbox="image-set">
-                    <img src="image\水泳４.JPG" alt="swimming4">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\水泳５.JPG data-lightbox="image-set">
-                    <img src="image\水泳５.JPG" alt="swimming5">
-                </a>
-            </div>
-
-            <div class="overflow-hidden">
-                <a href=image\水泳６.JPG data-lightbox="image-set">
-                    <img src="image\水泳６.JPG" alt="swimming6">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\未分類１.JPG data-lightbox="image-set">
-                    <img src="image\未分類１.JPG" alt="Uncategorized1">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\未分類２.JPG data-lightbox="image-set">
-                    <img src="image\未分類２.JPG" alt="Uncategorized2">
-                </a>     
-            </div>
-
-            <div class="overflow-hidden">
-                <a href=image\未分類３.JPG data-lightbox="image-set">
-                    <img src="image\未分類３.JPG" alt="Uncategorized3">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\未分類４.JPG data-lightbox="image-set">
-                    <img src="image\未分類４.JPG" alt="Uncategorized4">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href=image\未分類５.JPG data-lightbox="image-set">
-                    <img src="image/未分類５.JPG" alt="Uncategorized5">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/1.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/1.JPG" alt="basketball 1">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/2.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/2.JPG" alt="basketball 2">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/3.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/3.JPG" alt="basketball 3">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/4.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/4.JPG" alt="basketball 4">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/5.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/5.JPG" alt="basketball 5">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/6.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/6.JPG" alt="basketball 6">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/7.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/7.JPG" alt="basketball 7">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/8.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/8.JPG" alt="basketball 8">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/9.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/9.JPG" alt="basketball 9">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/10.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/10.JPG" alt="basketball 10">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/11.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/11.JPG" alt="basketball 11">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/12.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/12.JPG" alt="basketball 12">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/13.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/13.JPG" alt="basketball 13">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/14.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/14.JPG" alt="basketball 14">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/15.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/15.JPG" alt="basketball 15">
-                </a>
-            </div>
-            <div class="overflow-hidden">
-                <a href="image/バスケポートフォリオ用/16.JPG" data-lightbox="image-set">
-                    <img src="image/バスケポートフォリオ用/16.JPG" alt="basketball 16">
-                </a>
-            </div>
+        <div class="grid grid-cols-3 gap-4 image-gallery" id="imageGallery">
+            <!-- JavaScriptで画像を動的に追加 -->
         </div>
     </div>
 
