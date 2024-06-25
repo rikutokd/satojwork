@@ -24,6 +24,23 @@
         .image-gallery {
             display: none; /* 初期は非表示 */
         }
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800">
@@ -52,6 +69,7 @@
     </main>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="loader" id="loader"></div>
         <div class="grid grid-cols-3 gap-4 image-gallery" id="imageGallery">
             <!-- JavaScriptで画像を動的に追加 -->
         </div>

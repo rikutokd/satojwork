@@ -72,7 +72,9 @@ document.addEventListener('DOMContentLoaded', function() {
             div.appendChild(a);
             imageGallery.appendChild(div);
         });
+        document.getElementById('loader').style.display = 'none';
         document.querySelector('.image-gallery').style.display = 'grid';
+
     }
 
     images.forEach((image) => {
