@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     const imageGallery = document.getElementById('imageGallery');
-    const loaderContainer = document.getElementById('loader-container');
 
     let loadedImages = 0;
 
@@ -63,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
             div.appendChild(a);
             imageGallery.appendChild(div);
         });
-        loaderContainer.remove();
         imageGallery.style.display = 'grid';
         document.body.style.background = 'none';
     }
