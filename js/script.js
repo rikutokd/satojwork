@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             div.appendChild(a);
             imageGallery.appendChild(div);
         });
-        loaderContainer.style.display = 'none';
+        loaderContainer.remove();
         imageGallery.style.display = 'grid';
         document.body.style.background = 'none';
     }
