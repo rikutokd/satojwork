@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const img = new Image();
         img.src = image.src;
         img.alt = image.alt;
+        img.loading = 'lazy'; // 遅延読み込みを有効にする
 
         img.onload = () => {
             loadedImages++;
