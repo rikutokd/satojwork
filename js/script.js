@@ -35,20 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
         { src: "image/水泳５.JPG", alt: "swimming 5" },
         { src: "image/水泳６.JPG", alt: "swimming 6" },
         { src: "image/バスケポートフォリオ用/1.JPG", alt: "basketball 1" },
-        { src: "image/バスケポートフォリオ用/2.JPG", alt: "basketball 2" },
-        { src: "image/バスケポートフォリオ用/3.JPG", alt: "basketball 3" },
-        { src: "image/バスケポートフォリオ用/4.JPG", alt: "basketball 4" },
-        { src: "image/バスケポートフォリオ用/6.JPG", alt: "basketball 6" },
-        { src: "image/バスケポートフォリオ用/7.JPG", alt: "basketball 7" },
-        { src: "image/バスケポートフォリオ用/8.JPG", alt: "basketball 8" },
         { src: "image/バスケポートフォリオ用/9.JPG", alt: "basketball 9" },
         { src: "image/バスケポートフォリオ用/10.JPG", alt: "basketball 10" },
-        { src: "image/バスケポートフォリオ用/11.JPG", alt: "basketball 11" },
-        { src: "image/バスケポートフォリオ用/12.JPG", alt: "basketball 12" },
-        { src: "image/バスケポートフォリオ用/13.JPG", alt: "basketball 13" },
-        { src: "image/バスケポートフォリオ用/14.JPG", alt: "basketball 14" },
-        { src: "image/バスケポートフォリオ用/15.JPG", alt: "basketball 15" },
-        { src: "image/バスケポートフォリオ用/16.JPG", alt: "basketball 16" }
+        { src: "image/バスケポートフォリオ用/11.JPG", alt: "basketball 11" }
     ];
 
     const imageGallery = document.getElementById('imageGallery');
@@ -68,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const img = document.createElement('img');
             img.src = image.src;
             img.alt = image.alt;
+            img.loading = 'lazy'; // 遅延読み込みを有効にする
 
             a.appendChild(img);
             div.appendChild(a);
