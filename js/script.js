@@ -42,50 +42,55 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const imageGallery = document.getElementById('imageGallery');
 
-    let loadedImages = 0;
-
-    function displayImages(image) {
+    // スケルトン付きで画像を描画する関数
+    function displayImageWithSkeleton(image) {
         const div = document.createElement('div');
         div.classList.add('overflow-hidden');
-        div.style.background = '#e0e0e0'; // プレースホルダーの背景色
-    
+        div.style.background = '#e0e0e0'; // スケルトンの背景色
+
         const a = document.createElement('a');
         a.href = image.src;
         a.setAttribute('data-lightbox', 'image-set');
-    
+
         const img = document.createElement('img');
         img.dataset.src = image.src; // 遅延読み込み用
         img.alt = image.alt;
-        img.loading = 'lazy';
-    
+        img.style.opacity = 0; // 初期状態で画像は非表示
+
+        // 画像ロード後の処理
         img.onload = () => {
-            div.style.background = 'none'; // プレースホルダーを削除
+            div.style.background = 'none'; // スケルトン背景を削除
+            img.style.opacity = 1; // 画像を表示
         };
-    
+
+        // エラーハンドリング
+        img.onerror = () => {
+            console.error(`Failed to load image: ${image.src}`);
+            div.style.background = '#ffcccc'; // エラー時の背景色（オプション）
+        };
+
+        // 遅延読み込みを設定
+        img.loading = 'lazy';
+
         a.appendChild(img);
         div.appendChild(a);
         imageGallery.appendChild(div);
+
+        // IntersectionObserverで遅延読み込みを監視
+        observer.observe(img);
     }
 
-    images.forEach((image) => {
-        const img = new Image();
-        img.src = image.src;
-        img.alt = image.alt;
-        img.loading = 'lazy'; // 遅延読み込みを有効にする
-
-        img.onload = () => {
-            loadedImages++;
-            if (loadedImages === images.length) {
-                displayImages();
+    // IntersectionObserverを使用した遅延読み込み
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src; // 実際の画像を読み込み
+                observer.unobserve(img); // 観測を終了
             }
-        };
-
-        img.onerror = () => {
-            console.error(`Failed to load image: ${image.src}`);
-            loadedImages++;
-            if (loadedImages === images.length) {
-                displayImages();
-            }
-        };
+        });
     });
+
+    // 画像を順次描画
+    images.forEach(image => displayImageWithSkeleton(image));
 });
