@@ -7,203 +7,118 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: white;
-            color: #1f2937;
-        }
-        .header {
-            background-color: #FAFAFB;
-            color: #4b5563;
-            padding: 20px 0;
-        }
-        .header a {
-            color: #4b5563;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .footer {
-            background-color: #FAFAFB;
-            color: #4b5563;
-            padding: 30px 0;
-            text-align: center;
-        }
-        .carousel-control {
-            font-size: 24px;
-            color: #4b5563;
-            user-select: none;
-        }
-        .image-gallery {
-            display: flex;
-            overflow-x: auto;
-            gap: 16px;
-            padding: 20px 0;
-        }
-        .image-gallery img {
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .text-gray {
-            color: #4b5563;
-        }
-        .dot {
-            height: 10px;
-            width: 10px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            margin: 0 5px;
-            cursor: pointer;
+        .slider img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
         }
         .active-dot {
             background-color: #717171;
         }
-        .slider {
-            position: relative;
-            width: 100%;
-            max-width: 1500px; /* Adjusted for 3 images */
-            margin: auto;
-        }
-        .slides {
-            display: none;
-            justify-content: space-between;
-            flex-wrap: nowrap;
-        }
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-        @keyframes fade {
-            from {opacity: .4}
-            to {opacity: 1}
-        }
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-        }
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-        img {
-            width: 32%; /* Adjusted for 3 images */
-            margin: 0 1%; /* Small margin between images */
-        }
+        .hidden { display: none; }
     </style>
 </head>
-<body>
-    <div class="header">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="space-x-4">
-                <a href="index.html" class="hover:underline">Home</a>
-                <a href="portfolio.html" class="hover:underline">Portfolio</a>
+<body class="bg-white text-gray-800 font-sans">
+
+    <!-- Header -->
+    <header class="bg-gray-100 py-4">
+        <div class="container mx-auto flex justify-between px-4">
+            <h1 class="text-lg font-bold"><a href="index.html" class="text-gray-800 hover:underline">satoj Photography</a></h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="index.html" class="hover:text-gray-600">Home</a></li>
+                    <li><a href="portfolio.html" class="hover:text-gray-600">Portfolio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="container mx-auto px-4 py-16">
+        <!-- Intro Section -->
+        <section class="text-center mb-16">
+            <h1 class="text-4xl font-bold mb-6">Award-Winning Photography</h1>
+            <p class="text-lg text-gray-600">
+                Capturing the perfect moment is my passion. With over 10 years of experience, I specialize in sports photography,
+                capturing moments that tell a story. As a member of the Japan Sports Photography Association, my work has been
+                awarded and recognized globally.
+            </p>
+        </section>
+
+        <!-- Slider Section -->
+        <section class="slider relative">
+            <div id="slides-container" class="flex overflow-hidden">
+                <div class="slide hidden">
+                    <img src="image/水泳４.JPG" alt="Swimming action shot">
+                </div>
+                <div class="slide hidden">
+                    <img src="image/トライアスロン４.JPG" alt="Triathlon">
+                </div>
+                <div class="slide hidden">
+                    <img src="image/ラグビー７.JPG" alt="Rugby match">
+                </div>
             </div>
-        </div>
-    </div>
+            <!-- Navigation -->
+            <button id="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full">&larr;</button>
+            <button id="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full">&rarr;</button>
+            <!-- Dots -->
+            <div class="flex justify-center mt-4">
+                <span class="dot h-3 w-3 rounded-full bg-gray-400 mx-2 cursor-pointer"></span>
+                <span class="dot h-3 w-3 rounded-full bg-gray-400 mx-2 cursor-pointer"></span>
+                <span class="dot h-3 w-3 rounded-full bg-gray-400 mx-2 cursor-pointer"></span>
+            </div>
+        </section>
 
-    <div class="text-center p-8">
-        <h1 class="text-4xl font-bold mb-4">satoj Photography</h1>
-        <p class="mb-6 text-lg text-gray">Award-Winning Photography. Capturing the perfect moment is not easy, but I have dedicated my life to it. My photography is not <br>
-            just about taking pictures, it’s about telling a story. With over 10 years of experience, I specialize in sports photography, and I <br>
-            have captured some of the most memorable moments in sports history. I am a member of the Japan Sports Photography <br>
-            Association and have won multiple awards for my work. </p>
-    </div>
+        <!-- Profile Section -->
+        <section class="max-w-4xl mx-auto mt-16">
+            <h2 class="text-3xl font-bold mb-6">Profile</h2>
+            <p class="text-lg">
+                2014年 JCII主催 水谷塾入塾<br>
+                2017年 同塾卒業<br>
+                2018年〜2021年 JPS展入選<br>
+                2020年 JPS展優秀賞<br>
+                2023年 二科会 写真部 会友<br>
+                一般社団法人 日本スポーツ写真協会 会員<br>
+                日本ローイング協会 広報委員スタッフ
+            </p>
+        </section>
+    </main>
 
-    <div class="slider">
-        <!-- Slide 1 -->
-        <div class="slides fade">
-            <img src="image\水泳４.JPG" alt="swimming">
-            <img src="image\未分類４.JPG" alt="bicycle">
-            <img src="image\未分類１.JPG" alt="bicycle">
-        </div>
-        <!-- Slide 2 -->
-        <div class="slides fade">
-            <img src="image\トライアスロン４.JPG" alt="triathlon">
-            <img src="image\スケート２.JPG" alt="skate">
-            <img src="image\ラグビー７.JPG" alt="rugby">
-        </div>
-        <!-- Slide 3 -->
-        <div class="slides fade">
-            <img src="image\トライアスロン２.JPG" alt="triathlon">
-            <img src="image\未分類５.JPG" alt="boat">
-            <img src="image\ラグビー２.JPG" alt="rugby">
-        </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-    <div class="flex justify-center mt-4">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-    </div>
-
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("slides");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active-dot", "");
-            }
-            slides[slideIndex-1].style.display = "flex";
-            dots[slideIndex-1].className += " active-dot";
-        }
-    </script>
-
-    <div class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold mb-4">Profile</h1>
-        <p class="text-lg">
-            2014年JCII主催水谷塾入塾<br>
-            2017年同塾卒業<br>
-            2018年2021年JPS展入選<br>
-            2020年JPS展優秀賞<br>
-            2023年二科会 写真部 会友<br>
-            一般社団法人）日本スポーツ写真協会会員<br>
-            日本ローイング協会広報委員スタッフ
-        </p><br>
-
-        <p class="text-lg">
-            A member of Association of Nippon Sports Photograph ANSP<br>
-            Staff photographer Japan Rowing Association <br>
-            Team photographer Nanto bank shooting stars/Hockey<br>
-        </p>
-    </div>
-
-    <div class="footer">
+    <!-- Footer -->
+    <footer class="bg-gray-200 py-6 text-center">
         <h2 class="text-2xl font-bold mb-4">Contact</h2>
-        <div>
-            <div>Email</div>
-            <div>lilytorose1055@gmail.com</div>
-        </div>
-    </div>
+        <p>Email: <a href="mailto:lilytorose1055@gmail.com" class="text-blue-600 hover:underline">lilytorose1055@gmail.com</a></p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".dot");
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle("hidden", i !== index);
+                dots[i].classList.toggle("active-dot", i === index);
+            });
+        }
+
+        function nextSlide() {
+            slideIndex = (slideIndex + 1) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        function prevSlide() {
+            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        document.getElementById("next").addEventListener("click", nextSlide);
+        document.getElementById("prev").addEventListener("click", prevSlide);
+        dots.forEach((dot, i) => dot.addEventListener("click", () => showSlide(i)));
+
+        // 初期スライド表示
+        showSlide(slideIndex);
+    </script>
 </body>
 </html>
