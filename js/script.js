@@ -44,26 +44,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let loadedImages = 0;
 
-    function displayImages() {
-        images.forEach(image => {
-            const div = document.createElement('div');
-            div.classList.add('overflow-hidden');
-
-            const a = document.createElement('a');
-            a.href = image.src;
-            a.setAttribute('data-lightbox', 'image-set');
-
-            const img = document.createElement('img');
-            img.src = image.src;
-            img.alt = image.alt;
-            img.loading = 'lazy'; // 遅延読み込みを有効にする
-
-            a.appendChild(img);
-            div.appendChild(a);
-            imageGallery.appendChild(div);
-        });
-        imageGallery.style.display = 'grid';
-        document.body.style.background = 'none';
+    function displayImages(image) {
+        const div = document.createElement('div');
+        div.classList.add('overflow-hidden');
+        div.style.background = '#e0e0e0'; // プレースホルダーの背景色
+    
+        const a = document.createElement('a');
+        a.href = image.src;
+        a.setAttribute('data-lightbox', 'image-set');
+    
+        const img = document.createElement('img');
+        img.dataset.src = image.src; // 遅延読み込み用
+        img.alt = image.alt;
+        img.loading = 'lazy';
+    
+        img.onload = () => {
+            div.style.background = 'none'; // プレースホルダーを削除
+        };
+    
+        a.appendChild(img);
+        div.appendChild(a);
+        imageGallery.appendChild(div);
     }
 
     images.forEach((image) => {
