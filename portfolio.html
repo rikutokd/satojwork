@@ -4,30 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
+    <!-- Font Awesome & Lightbox -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="css\lightbox.css" rel="stylesheet">
-
+    <link href="css/lightbox.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
-    <script src="js\script.js"></script>
-    
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-        .footer {
-            background-color: #FAFAFB;
-            color: #4b5563;
-            padding: 30px 0;
-            text-align: center;
-        }
-        .image-gallery {
-            display: none; /* 初期は非表示 */
-        }
-    </style>
+    <script src="js/script.js" defer></script>
 </head>
-<body class="bg-white text-gray-800">
-    <header class="flex justify-start items-center px-8 py-4">
+<body class="bg-white text-gray-800 font-sans">
+    <!-- Header -->
+    <header class="flex justify-between items-center px-8 py-4 bg-gray-100">
+        <h1 class="text-lg font-bold"><a href="index.html" class="text-gray-800 hover:text-gray-600">My Portfolio</a></h1>
         <nav>
             <ul class="flex space-x-4">
                 <li><a href="index.html" class="text-gray-800 hover:text-gray-600">Home</a></li>
@@ -36,33 +24,30 @@
         </nav>
     </header>
 
-    <main class="flex items-center justify-center px-8 py-16">
-        <div class="flex-1">
-            <h1 class="text-6xl font-bold">Portfolio</h1>
-        </div>
-        <div class="flex-1 flex justify-center">
-            <img src="image\camera.jpg" alt="Camera lens, representing photography portfolio" class="w-48 h-48">
-        </div>
-        <div class="flex-1">
-            <h2 class="text-3xl font-bold">Capturing the Beauty of Sports</h2>
-            <p class="mt-4">
-                Welcome to my photography portfolio! As a member of the Japan Sports Photography Association, I specialize in capturing the beauty, intensity, and emotion of sports. With over 10 years of experience and multiple awards to my credit, you can trust me to deliver stunning, award-winning images that capture the essence of your favorite sports.
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <section class="text-center mb-12">
+            <h1 class="text-4xl font-bold">Portfolio</h1>
+            <p class="text-lg mt-4">Capturing the Beauty of Sports</p>
+        </section>
+
+        <section class="text-center mb-16">
+            <img src="image/camera.jpg" alt="Camera lens, representing photography portfolio" class="w-64 h-64 mx-auto rounded-full shadow-lg">
+            <p class="text-lg mt-6">
+                Welcome to my photography portfolio! As a member of the Japan Sports Photography Association, I specialize in capturing the beauty, intensity, and emotion of sports.
             </p>
-        </div>
+        </section>
+
+        <!-- Image Gallery -->
+        <section id="imageGallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 image-gallery">
+            <!-- JavaScriptで動的に追加 -->
+        </section>
     </main>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-3 gap-4 image-gallery" id="imageGallery">
-            <!-- JavaScriptで画像を動的に追加 -->
-        </div>
-    </div>    
-
-    <div class="footer">
+    <!-- Footer -->
+    <footer class="bg-gray-200 py-6 text-center">
         <h2 class="text-2xl font-bold mb-4">Contact</h2>
-        <div>
-            <div>Email</div>
-            <div>lilytorose1055@gmail.com</div>
-        </div>
-    </div>
+        <p>Email: <a href="mailto:lilytorose1055@gmail.com" class="text-blue-600 hover:underline">lilytorose1055@gmail.com</a></p>
+    </footer>
 </body>
 </html>
