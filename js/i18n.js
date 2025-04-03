@@ -44,6 +44,10 @@ function updateTextContent() {
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.value = translations[currentLang][key];
             } else {
+                // プロフィールコンテンツの場合は特別な処理
+                if (key === 'profile_content') {
+                    element.style.whiteSpace = 'pre-line';
+                }
                 element.innerHTML = translations[currentLang][key];
             }
         }

@@ -41,14 +41,14 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     const imageGallery = document.getElementById('imageGallery');
-    const initialLoadCount = 6; // 最初に表示する画像数
-    const loadMoreCount = 6; // 追加で読み込む画像数
+    const initialLoadCount = 6;
+    const loadMoreCount = 6;
     let currentIndex = 0;
 
     // Create a low-resolution placeholder
     function createPlaceholder() {
         const placeholder = document.createElement('div');
-        placeholder.className = 'w-full h-64 bg-gray-200 animate-pulse';
+        placeholder.className = 'w-full h-96 bg-gray-200 animate-pulse';
         return placeholder;
     }
 
@@ -68,11 +68,12 @@ document.addEventListener('DOMContentLoaded', function() {
             const a = document.createElement('a');
             a.href = image.src;
             a.setAttribute('data-lightbox', 'image-set');
+            a.setAttribute('data-title', image.alt);
             
             const img = new Image();
             img.src = image.src;
             img.alt = image.alt;
-            img.className = 'w-full h-64 object-cover transition-opacity duration-300';
+            img.className = 'w-full h-96 object-cover transition-opacity duration-300 cursor-pointer';
             img.style.opacity = '0';
             
             img.onload = () => {
@@ -87,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         currentIndex = end;
         
-        // すべての画像を表示したらボタンを非表示
         if (currentIndex >= images.length) {
             const loadMoreButton = document.getElementById('loadMoreButton');
             if (loadMoreButton) {
@@ -110,6 +110,17 @@ document.addEventListener('DOMContentLoaded', function() {
         buttonContainer.appendChild(button);
         imageGallery.parentNode.insertBefore(buttonContainer, imageGallery.nextSibling);
     }
+
+    // Configure lightbox
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'albumLabel': '画像 %1 / %2',
+        'fadeDuration': 300,
+        'imageFadeDuration': 300,
+        'disableScrolling': true,
+        'fitImagesInViewport': true
+    });
 
     // Initial load
     loadImages(initialLoadCount);

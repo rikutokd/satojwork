@@ -17,8 +17,18 @@
             background-color: #717171;
         }
         .hidden { display: none; }
+        [data-i18n] {
+            white-space: nowrap;
+        }
         [data-i18n="profile_content"] {
             white-space: pre-line;
+        }
+        .nav-button {
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .nav-button:hover {
+            opacity: 1;
         }
     </style>
 </head>
@@ -100,6 +110,8 @@
         let slideIndex = 0;
         const slides = document.querySelectorAll(".slide");
         const dots = document.querySelectorAll(".dot");
+        let touchStartX = 0;
+        let touchEndX = 0;
 
         function showSlide(index) {
             slides.forEach((slide, i) => {
@@ -116,6 +128,26 @@
         function prevSlide() {
             slideIndex = (slideIndex - 1 + slides.length) % slides.length;
             showSlide(slideIndex);
+        }
+
+        // Touch events for swipe
+        const slider = document.querySelector('.slider');
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        slider.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                nextSlide();
+            } else if (touchEndX > touchStartX + swipeThreshold) {
+                prevSlide();
+            }
         }
 
         document.getElementById("next").addEventListener("click", nextSlide);
