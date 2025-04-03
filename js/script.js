@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const a = document.createElement('a');
             a.href = image.src;
             a.setAttribute('data-lightbox', 'image-set');
-            a.setAttribute('data-title', image.alt);
             
             const img = new Image();
             img.src = image.src;
