@@ -30,30 +30,52 @@
         .nav-button:hover {
             opacity: 1;
         }
+        @media (max-width: 640px) {
+            [data-i18n] {
+                white-space: normal;
+                word-break: break-word;
+            }
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .nav-content {
+                margin-top: 1rem;
+            }
+            .slider img {
+                max-height: 50vh;
+            }
+            .nav-button {
+                padding: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800 font-sans">
 
     <!-- Header -->
     <header class="bg-gray-100 py-4">
-        <div class="container mx-auto flex justify-between items-center px-4">
-            <h1 class="text-lg font-bold"><a href="index.html" class="text-gray-800 hover:underline">satoj Photography</a></h1>
-            <nav class="flex items-center space-x-4">
-                <ul class="flex space-x-4">
-                    <li><a href="index.html" class="hover:text-gray-600" data-i18n="nav_home">ホーム</a></li>
-                    <li><a href="portfolio.html" class="hover:text-gray-600" data-i18n="nav_portfolio">ポートフォリオ</a></li>
-                </ul>
-                <button id="languageToggle" class="ml-4 px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" data-i18n="switch_lang">English</button>
-            </nav>
+        <div class="container mx-auto px-4">
+            <div class="header-content flex flex-col sm:flex-row justify-between items-center">
+                <h1 class="text-lg font-bold mb-4 sm:mb-0"><a href="index.html" class="text-gray-800 hover:underline">satoj Photography</a></h1>
+                <nav class="nav-content flex items-center space-x-4">
+                    <ul class="flex space-x-4">
+                        <li><a href="index.html" class="hover:text-gray-600" data-i18n="nav_home">ホーム</a></li>
+                        <li><a href="portfolio.html" class="hover:text-gray-600" data-i18n="nav_portfolio">ポートフォリオ</a></li>
+                    </ul>
+                    <button id="languageToggle" class="ml-4 px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" data-i18n="switch_lang">English</button>
+                </nav>
+            </div>
         </div>
     </header>
 
     <!-- Main Section -->
-    <main class="container mx-auto px-4 py-16">
+    <main class="container mx-auto px-4 py-8 sm:py-16">
         <!-- Intro Section -->
-        <section class="text-center mb-16">
-            <h1 class="text-4xl font-bold mb-6" data-i18n="main_title">受賞歴のあるフォトグラフィー</h1>
-            <p class="text-lg text-gray-600" data-i18n="main_description">
+        <section class="text-center mb-8 sm:mb-16">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6" data-i18n="main_title">受賞歴のあるフォトグラフィー</h1>
+            <p class="text-base sm:text-lg text-gray-600 px-4" data-i18n="main_description">
                 完璧な瞬間を捉えることが私の情熱です。10年以上の経験を持つスポーツ写真家として、
                 ストーリーを語る瞬間を捉えることを専門としています。日本スポーツ写真協会の会員として、
                 私の作品は国内外で受賞し、高く評価されています。
@@ -74,8 +96,8 @@
                 </div>
             </div>
             <!-- Navigation -->
-            <button id="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full">&larr;</button>
-            <button id="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full">&rarr;</button>
+            <button id="prev" class="nav-button absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full">&larr;</button>
+            <button id="next" class="nav-button absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full">&rarr;</button>
             <!-- Dots -->
             <div class="flex justify-center mt-4">
                 <span class="dot h-3 w-3 rounded-full bg-gray-400 mx-2 cursor-pointer"></span>
@@ -85,9 +107,9 @@
         </section>
 
         <!-- Profile Section -->
-        <section class="max-w-4xl mx-auto mt-16">
-            <h2 class="text-3xl font-bold mb-6" data-i18n="profile_title">プロフィール</h2>
-            <p class="text-lg" data-i18n="profile_content">
+        <section class="max-w-4xl mx-auto mt-8 sm:mt-16 px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6" data-i18n="profile_title">プロフィール</h2>
+            <p class="text-base sm:text-lg" data-i18n="profile_content">
                 2014年 JCII主催 水谷塾入塾<br>
                 2017年 同塾卒業<br>
                 2018年〜2021年 JPS展入選<br>
@@ -101,7 +123,7 @@
 
     <!-- Footer -->
     <footer class="bg-gray-200 py-6 text-center">
-        <h2 class="text-2xl font-bold mb-4" data-i18n="contact_title">Contact</h2>
+        <h2 class="text-xl sm:text-2xl font-bold mb-4" data-i18n="contact_title">Contact</h2>
         <p>Email: <a href="mailto:lilytorose1055@gmail.com" class="text-blue-600 hover:underline">lilytorose1055@gmail.com</a></p>
     </footer>
 
@@ -110,8 +132,6 @@
         let slideIndex = 0;
         const slides = document.querySelectorAll(".slide");
         const dots = document.querySelectorAll(".dot");
-        let touchStartX = 0;
-        let touchEndX = 0;
 
         function showSlide(index) {
             slides.forEach((slide, i) => {
@@ -128,26 +148,6 @@
         function prevSlide() {
             slideIndex = (slideIndex - 1 + slides.length) % slides.length;
             showSlide(slideIndex);
-        }
-
-        // Touch events for swipe
-        const slider = document.querySelector('.slider');
-        slider.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        slider.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            if (touchEndX < touchStartX - swipeThreshold) {
-                nextSlide();
-            } else if (touchEndX > touchStartX + swipeThreshold) {
-                prevSlide();
-            }
         }
 
         document.getElementById("next").addEventListener("click", nextSlide);

@@ -44,9 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const initialLoadCount = 6;
     const loadMoreCount = 6;
     let currentIndex = 0;
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let isSwiping = false;
 
     // Create a low-resolution placeholder
     function createPlaceholder() {
@@ -82,6 +79,11 @@ document.addEventListener('DOMContentLoaded', function() {
             img.onload = () => {
                 placeholder.remove();
                 img.style.opacity = '1';
+            };
+
+            img.onerror = () => {
+                placeholder.remove();
+                div.innerHTML = '<div class="w-full aspect-[4/3] bg-gray-200 flex items-center justify-center text-gray-500">画像の読み込みに失敗しました</div>';
             };
             
             a.appendChild(img);
@@ -125,53 +127,6 @@ document.addEventListener('DOMContentLoaded', function() {
         'fitImagesInViewport': true,
         'maxWidth': '100%',
         'maxHeight': '100%'
-    });
-
-    // Add touch events for swipe functionality
-    function setupSwipeHandlers() {
-        const lightboxContainer = document.querySelector('.lb-container');
-        if (!lightboxContainer) return;
-
-        lightboxContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-            isSwiping = true;
-        }, { passive: true });
-
-        lightboxContainer.addEventListener('touchmove', (e) => {
-            if (!isSwiping) return;
-            touchEndX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        lightboxContainer.addEventListener('touchend', () => {
-            if (!isSwiping) return;
-            handleSwipe();
-            isSwiping = false;
-        }, { passive: true });
-    }
-
-    function handleSwipe() {
-        const swipeThreshold = 30; // より自然な操作感のために閾値を下げる
-        const swipeDistance = touchEndX - touchStartX;
-        
-        if (Math.abs(swipeDistance) < swipeThreshold) return;
-        
-        if (swipeDistance < 0) {
-            // Swipe left - next image
-            const nextButton = document.querySelector('.lb-next');
-            if (nextButton) nextButton.click();
-        } else {
-            // Swipe right - previous image
-            const prevButton = document.querySelector('.lb-prev');
-            if (prevButton) prevButton.click();
-        }
-    }
-
-    // ライトボックスが開かれたときにスワイプハンドラーを設定
-    document.addEventListener('click', (e) => {
-        if (e.target.matches('a[data-lightbox]')) {
-            // ライトボックスが開かれるのを待ってからハンドラーを設定
-            setTimeout(setupSwipeHandlers, 100);
-        }
     });
 
     // Initial load

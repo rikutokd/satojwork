@@ -26,6 +26,28 @@
             .mobile-menu {
                 display: block;
             }
+            /* モバイル表示時のテキスト調整 */
+            [data-i18n] {
+                white-space: normal;
+                word-break: break-word;
+            }
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .nav-content {
+                margin-top: 1rem;
+            }
+            .portfolio-description {
+                padding: 0 1rem;
+            }
+            .image-gallery {
+                gap: 0.5rem;
+            }
+            .image-container {
+                margin: 0.25rem;
+            }
         }
         .image-container {
             aspect-ratio: 4/3;
@@ -41,14 +63,16 @@
 <body class="bg-white text-gray-800 font-sans">
     <!-- Header -->
     <header class="flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8 py-4 bg-gray-100">
-        <h1 class="text-lg font-bold mb-4 sm:mb-0"><a href="index.html" class="text-gray-800 hover:text-gray-600">satoj Photography</a></h1>
-        <nav class="flex items-center space-x-4">
-            <ul class="flex space-x-4 nav-links">
-                <li><a href="index.html" class="text-gray-800 hover:text-gray-600" data-i18n="nav_home">ホーム</a></li>
-                <li><a href="portfolio.html" class="text-gray-800 hover:text-gray-600" data-i18n="nav_portfolio">ポートフォリオ</a></li>
-            </ul>
-            <button id="languageToggle" class="ml-4 px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" data-i18n="switch_lang">English</button>
-        </nav>
+        <div class="header-content flex flex-col sm:flex-row items-center">
+            <h1 class="text-lg font-bold mb-4 sm:mb-0"><a href="index.html" class="text-gray-800 hover:text-gray-600">satoj Photography</a></h1>
+            <nav class="nav-content flex items-center space-x-4">
+                <ul class="flex space-x-4 nav-links">
+                    <li><a href="index.html" class="text-gray-800 hover:text-gray-600" data-i18n="nav_home">ホーム</a></li>
+                    <li><a href="portfolio.html" class="text-gray-800 hover:text-gray-600" data-i18n="nav_portfolio">ポートフォリオ</a></li>
+                </ul>
+                <button id="languageToggle" class="ml-4 px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" data-i18n="switch_lang">English</button>
+            </nav>
+        </div>
     </header>
 
     <!-- Main Content -->
@@ -60,7 +84,7 @@
 
         <section class="text-center mb-8 sm:mb-16">
             <img src="image/camera.jpg" alt="Camera lens, representing photography portfolio" class="w-48 h-48 sm:w-64 sm:h-64 mx-auto rounded-full shadow-lg">
-            <p class="text-base sm:text-lg mt-4 sm:mt-6" data-i18n="portfolio_description">
+            <p class="text-base sm:text-lg mt-4 sm:mt-6 portfolio-description" data-i18n="portfolio_description">
                 私の写真ポートフォリオへようこそ！日本スポーツ写真協会の会員として、スポーツの美しさ、強さ、そして感情を捉えることを専門としています。
             </p>
         </section>
