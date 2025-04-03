@@ -93,11 +93,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         currentIndex = end;
         
-        if (currentIndex >= images.length) {
-            const loadMoreButton = document.getElementById('loadMoreButton');
-            if (loadMoreButton) {
-                loadMoreButton.style.display = 'none';
-            }
+        // Hide the load more button after first click
+        const loadMoreButton = document.getElementById('loadMoreButton');
+        if (loadMoreButton) {
+            loadMoreButton.style.display = 'none';
         }
     }
 
@@ -110,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
         button.id = 'loadMoreButton';
         button.className = 'px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors';
         button.textContent = 'もっと見る';
-        button.addEventListener('click', () => loadImages(loadMoreCount));
+        button.addEventListener('click', () => loadImages(images.length - currentIndex));
         
         buttonContainer.appendChild(button);
         imageGallery.parentNode.insertBefore(buttonContainer, imageGallery.nextSibling);
