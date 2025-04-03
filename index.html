@@ -6,6 +6,7 @@
     <title>satoj Photography</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="js/i18n.js" defer></script>
     <style>
         .slider img {
             width: 100%;
@@ -23,12 +24,13 @@
     <!-- Header -->
     <header class="bg-gray-100 py-4">
         <div class="container mx-auto flex justify-between px-4">
-            <h1 class="text-lg font-bold"><a href="index.html" class="text-gray-800 hover:underline">satoj Photography</a></h1>
-            <nav>
+            <h1 class="text-lg font-bold"><a href="index.html" class="text-gray-800 hover:underline" data-i18n="site_title">satoj フォトグラフィー</a></h1>
+            <nav class="flex items-center space-x-4">
                 <ul class="flex space-x-4">
-                    <li><a href="index.html" class="hover:text-gray-600">Home</a></li>
-                    <li><a href="portfolio.html" class="hover:text-gray-600">Portfolio</a></li>
+                    <li><a href="index.html" class="hover:text-gray-600" data-i18n="nav_home">ホーム</a></li>
+                    <li><a href="portfolio.html" class="hover:text-gray-600" data-i18n="nav_portfolio">ポートフォリオ</a></li>
                 </ul>
+                <button id="languageToggle" class="ml-4 px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" data-i18n="switch_lang">English</button>
             </nav>
         </div>
     </header>
@@ -37,11 +39,11 @@
     <main class="container mx-auto px-4 py-16">
         <!-- Intro Section -->
         <section class="text-center mb-16">
-            <h1 class="text-4xl font-bold mb-6">Award-Winning Photography</h1>
-            <p class="text-lg text-gray-600">
-                Capturing the perfect moment is my passion. With over 10 years of experience, I specialize in sports photography,
-                capturing moments that tell a story. As a member of the Japan Sports Photography Association, my work has been
-                awarded and recognized globally.
+            <h1 class="text-4xl font-bold mb-6" data-i18n="main_title">受賞歴のあるフォトグラフィー</h1>
+            <p class="text-lg text-gray-600" data-i18n="main_description">
+                完璧な瞬間を捉えることが私の情熱です。10年以上の経験を持つスポーツ写真家として、
+                ストーリーを語る瞬間を捉えることを専門としています。日本スポーツ写真協会の会員として、
+                私の作品は国内外で受賞し、高く評価されています。
             </p>
         </section>
 

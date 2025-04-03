@@ -41,56 +41,74 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     const imageGallery = document.getElementById('imageGallery');
+    const batchSize = 6; // Number of images to load at once
+    let currentBatch = 0;
 
-    // スケルトン付きで画像を描画する関数
-    function displayImageWithSkeleton(image) {
-        const div = document.createElement('div');
-        div.classList.add('overflow-hidden');
-        div.style.background = '#e0e0e0'; // スケルトンの背景色
-
-        const a = document.createElement('a');
-        a.href = image.src;
-        a.setAttribute('data-lightbox', 'image-set');
-
-        const img = document.createElement('img');
-        img.dataset.src = image.src; // 遅延読み込み用
-        img.alt = image.alt;
-        img.style.opacity = 0; // 初期状態で画像は非表示
-
-        // 画像ロード後の処理
-        img.onload = () => {
-            div.style.background = 'none'; // スケルトン背景を削除
-            img.style.opacity = 1; // 画像を表示
-        };
-
-        // エラーハンドリング
-        img.onerror = () => {
-            console.error(`Failed to load image: ${image.src}`);
-            div.style.background = '#ffcccc'; // エラー時の背景色（オプション）
-        };
-
-        // 遅延読み込みを設定
-        img.loading = 'lazy';
-
-        a.appendChild(img);
-        div.appendChild(a);
-        imageGallery.appendChild(div);
-
-        // IntersectionObserverで遅延読み込みを監視
-        observer.observe(img);
+    // Create a low-resolution placeholder
+    function createPlaceholder() {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'w-full h-64 bg-gray-200 animate-pulse';
+        return placeholder;
     }
 
-    // IntersectionObserverを使用した遅延読み込み
-    const observer = new IntersectionObserver((entries, observer) => {
+    // Load images in batches
+    function loadNextBatch() {
+        const start = currentBatch * batchSize;
+        const end = Math.min(start + batchSize, images.length);
+        
+        for (let i = start; i < end; i++) {
+            const image = images[i];
+            const div = document.createElement('div');
+            div.className = 'overflow-hidden relative';
+            
+            // Add placeholder
+            const placeholder = createPlaceholder();
+            div.appendChild(placeholder);
+            
+            const a = document.createElement('a');
+            a.href = image.src;
+            a.setAttribute('data-lightbox', 'image-set');
+            
+            const img = new Image();
+            img.src = image.src;
+            img.alt = image.alt;
+            img.className = 'w-full h-64 object-cover transition-opacity duration-300';
+            img.style.opacity = '0';
+            
+            img.onload = () => {
+                placeholder.remove();
+                img.style.opacity = '1';
+            };
+            
+            a.appendChild(img);
+            div.appendChild(a);
+            imageGallery.appendChild(div);
+        }
+        
+        currentBatch++;
+    }
+
+    // Intersection Observer for lazy loading
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src; // 実際の画像を読み込み
-                observer.unobserve(img); // 観測を終了
+            if (entry.isIntersecting && currentBatch * batchSize < images.length) {
+                loadNextBatch();
             }
         });
+    }, {
+        rootMargin: '100px',
+        threshold: 0.1
     });
 
-    // 画像を順次描画
-    images.forEach(image => displayImageWithSkeleton(image));
+    // Observe the last image container
+    const observeLastImage = () => {
+        const lastImage = imageGallery.lastElementChild;
+        if (lastImage) {
+            observer.observe(lastImage);
+        }
+    };
+
+    // Initial load
+    loadNextBatch();
+    observeLastImage();
 });

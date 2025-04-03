@@ -10,31 +10,33 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
+    <script src="js/i18n.js" defer></script>
     <script src="js/script.js" defer></script>
 </head>
 <body class="bg-white text-gray-800 font-sans">
     <!-- Header -->
     <header class="flex justify-between items-center px-8 py-4 bg-gray-100">
-        <h1 class="text-lg font-bold"><a href="index.html" class="text-gray-800 hover:text-gray-600">My Portfolio</a></h1>
-        <nav>
+        <h1 class="text-lg font-bold"><a href="index.html" class="text-gray-800 hover:text-gray-600" data-i18n="portfolio_title">ポートフォリオ</a></h1>
+        <nav class="flex items-center space-x-4">
             <ul class="flex space-x-4">
-                <li><a href="index.html" class="text-gray-800 hover:text-gray-600">Home</a></li>
-                <li><a href="portfolio.html" class="text-gray-800 hover:text-gray-600">Portfolio</a></li>
+                <li><a href="index.html" class="text-gray-800 hover:text-gray-600" data-i18n="nav_home">ホーム</a></li>
+                <li><a href="portfolio.html" class="text-gray-800 hover:text-gray-600" data-i18n="nav_portfolio">ポートフォリオ</a></li>
             </ul>
+            <button id="languageToggle" class="ml-4 px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" data-i18n="switch_lang">English</button>
         </nav>
     </header>
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <section class="text-center mb-12">
-            <h1 class="text-4xl font-bold">Portfolio</h1>
-            <p class="text-lg mt-4">Capturing the Beauty of Sports</p>
+            <h1 class="text-4xl font-bold" data-i18n="portfolio_heading">ポートフォリオ</h1>
+            <p class="text-lg mt-4" data-i18n="portfolio_subtitle">スポーツの美しさを捉える</p>
         </section>
 
         <section class="text-center mb-16">
             <img src="image/camera.jpg" alt="Camera lens, representing photography portfolio" class="w-64 h-64 mx-auto rounded-full shadow-lg">
-            <p class="text-lg mt-6">
-                Welcome to my photography portfolio! As a member of the Japan Sports Photography Association, I specialize in capturing the beauty, intensity, and emotion of sports.
+            <p class="text-lg mt-6" data-i18n="portfolio_description">
+                私の写真ポートフォリオへようこそ！日本スポーツ写真協会の会員として、スポーツの美しさ、強さ、そして感情を捉えることを専門としています。
             </p>
         </section>
 
