@@ -19,14 +19,31 @@
         [data-i18n="profile_content"] {
             white-space: pre-line;
         }
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+            .mobile-menu {
+                display: block;
+            }
+        }
+        .image-container {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     </style>
 </head>
 <body class="bg-white text-gray-800 font-sans">
     <!-- Header -->
-    <header class="flex justify-between items-center px-8 py-4 bg-gray-100">
-        <h1 class="text-lg font-bold"><a href="index.html" class="text-gray-800 hover:text-gray-600" data-i18n="portfolio_title">ポートフォリオ</a></h1>
+    <header class="flex flex-col sm:flex-row justify-between items-center px-4 sm:px-8 py-4 bg-gray-100">
+        <h1 class="text-lg font-bold mb-4 sm:mb-0"><a href="index.html" class="text-gray-800 hover:text-gray-600">satoj Photography</a></h1>
         <nav class="flex items-center space-x-4">
-            <ul class="flex space-x-4">
+            <ul class="flex space-x-4 nav-links">
                 <li><a href="index.html" class="text-gray-800 hover:text-gray-600" data-i18n="nav_home">ホーム</a></li>
                 <li><a href="portfolio.html" class="text-gray-800 hover:text-gray-600" data-i18n="nav_portfolio">ポートフォリオ</a></li>
             </ul>
@@ -35,28 +52,28 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <section class="text-center mb-12">
-            <h1 class="text-4xl font-bold" data-i18n="portfolio_heading">ポートフォリオ</h1>
-            <p class="text-lg mt-4" data-i18n="portfolio_subtitle">スポーツの美しさを捉える</p>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
+        <section class="text-center mb-8 sm:mb-12">
+            <h1 class="text-3xl sm:text-4xl font-bold" data-i18n="portfolio_heading">ポートフォリオ</h1>
+            <p class="text-base sm:text-lg mt-4" data-i18n="portfolio_subtitle">スポーツの美しさを捉える</p>
         </section>
 
-        <section class="text-center mb-16">
-            <img src="image/camera.jpg" alt="Camera lens, representing photography portfolio" class="w-64 h-64 mx-auto rounded-full shadow-lg">
-            <p class="text-lg mt-6" data-i18n="portfolio_description">
+        <section class="text-center mb-8 sm:mb-16">
+            <img src="image/camera.jpg" alt="Camera lens, representing photography portfolio" class="w-48 h-48 sm:w-64 sm:h-64 mx-auto rounded-full shadow-lg">
+            <p class="text-base sm:text-lg mt-4 sm:mt-6" data-i18n="portfolio_description">
                 私の写真ポートフォリオへようこそ！日本スポーツ写真協会の会員として、スポーツの美しさ、強さ、そして感情を捉えることを専門としています。
             </p>
         </section>
 
         <!-- Image Gallery -->
-        <section id="imageGallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 image-gallery">
+        <section id="imageGallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 image-gallery">
             <!-- JavaScriptで動的に追加 -->
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="bg-gray-200 py-6 text-center">
-        <h2 class="text-2xl font-bold mb-4" data-i18n="contact_title">Contact</h2>
+        <h2 class="text-xl sm:text-2xl font-bold mb-4" data-i18n="contact_title">Contact</h2>
         <p>Email: <a href="mailto:lilytorose1055@gmail.com" class="text-blue-600 hover:underline">lilytorose1055@gmail.com</a></p>
     </footer>
 </body>

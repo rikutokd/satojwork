@@ -44,11 +44,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const initialLoadCount = 6;
     const loadMoreCount = 6;
     let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isSwiping = false;
 
     // Create a low-resolution placeholder
     function createPlaceholder() {
         const placeholder = document.createElement('div');
-        placeholder.className = 'w-full h-96 bg-gray-200 animate-pulse';
+        placeholder.className = 'w-full aspect-[4/3] bg-gray-200 animate-pulse';
         return placeholder;
     }
 
@@ -59,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = currentIndex; i < end; i++) {
             const image = images[i];
             const div = document.createElement('div');
-            div.className = 'overflow-hidden relative';
+            div.className = 'overflow-hidden relative image-container';
             
             // Add placeholder
             const placeholder = createPlaceholder();
@@ -73,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const img = new Image();
             img.src = image.src;
             img.alt = image.alt;
-            img.className = 'w-full h-96 object-cover transition-opacity duration-300 cursor-pointer';
+            img.className = 'w-full h-full object-cover transition-opacity duration-300 cursor-pointer';
             img.style.opacity = '0';
             
             img.onload = () => {
@@ -119,7 +122,56 @@ document.addEventListener('DOMContentLoaded', function() {
         'fadeDuration': 300,
         'imageFadeDuration': 300,
         'disableScrolling': true,
-        'fitImagesInViewport': true
+        'fitImagesInViewport': true,
+        'maxWidth': '100%',
+        'maxHeight': '100%'
+    });
+
+    // Add touch events for swipe functionality
+    function setupSwipeHandlers() {
+        const lightboxContainer = document.querySelector('.lb-container');
+        if (!lightboxContainer) return;
+
+        lightboxContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            isSwiping = true;
+        }, { passive: true });
+
+        lightboxContainer.addEventListener('touchmove', (e) => {
+            if (!isSwiping) return;
+            touchEndX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightboxContainer.addEventListener('touchend', () => {
+            if (!isSwiping) return;
+            handleSwipe();
+            isSwiping = false;
+        }, { passive: true });
+    }
+
+    function handleSwipe() {
+        const swipeThreshold = 30; // より自然な操作感のために閾値を下げる
+        const swipeDistance = touchEndX - touchStartX;
+        
+        if (Math.abs(swipeDistance) < swipeThreshold) return;
+        
+        if (swipeDistance < 0) {
+            // Swipe left - next image
+            const nextButton = document.querySelector('.lb-next');
+            if (nextButton) nextButton.click();
+        } else {
+            // Swipe right - previous image
+            const prevButton = document.querySelector('.lb-prev');
+            if (prevButton) prevButton.click();
+        }
+    }
+
+    // ライトボックスが開かれたときにスワイプハンドラーを設定
+    document.addEventListener('click', (e) => {
+        if (e.target.matches('a[data-lightbox]')) {
+            // ライトボックスが開かれるのを待ってからハンドラーを設定
+            setTimeout(setupSwipeHandlers, 100);
+        }
     });
 
     // Initial load
