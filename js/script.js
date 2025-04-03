@@ -41,8 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     const imageGallery = document.getElementById('imageGallery');
-    const batchSize = 6; // Number of images to load at once
-    let currentBatch = 0;
+    const initialLoadCount = 6; // 最初に表示する画像数
+    const loadMoreCount = 6; // 追加で読み込む画像数
+    let currentIndex = 0;
 
     // Create a low-resolution placeholder
     function createPlaceholder() {
@@ -51,12 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
         return placeholder;
     }
 
-    // Load images in batches
-    function loadNextBatch() {
-        const start = currentBatch * batchSize;
-        const end = Math.min(start + batchSize, images.length);
+    // Load images
+    function loadImages(count) {
+        const end = Math.min(currentIndex + count, images.length);
         
-        for (let i = start; i < end; i++) {
+        for (let i = currentIndex; i < end; i++) {
             const image = images[i];
             const div = document.createElement('div');
             div.className = 'overflow-hidden relative';
@@ -85,30 +85,33 @@ document.addEventListener('DOMContentLoaded', function() {
             imageGallery.appendChild(div);
         }
         
-        currentBatch++;
+        currentIndex = end;
+        
+        // すべての画像を表示したらボタンを非表示
+        if (currentIndex >= images.length) {
+            const loadMoreButton = document.getElementById('loadMoreButton');
+            if (loadMoreButton) {
+                loadMoreButton.style.display = 'none';
+            }
+        }
     }
 
-    // Intersection Observer for lazy loading
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && currentBatch * batchSize < images.length) {
-                loadNextBatch();
-            }
-        });
-    }, {
-        rootMargin: '100px',
-        threshold: 0.1
-    });
-
-    // Observe the last image container
-    const observeLastImage = () => {
-        const lastImage = imageGallery.lastElementChild;
-        if (lastImage) {
-            observer.observe(lastImage);
-        }
-    };
+    // Create and add load more button
+    function createLoadMoreButton() {
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'text-center mt-8';
+        
+        const button = document.createElement('button');
+        button.id = 'loadMoreButton';
+        button.className = 'px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors';
+        button.textContent = 'もっと見る';
+        button.addEventListener('click', () => loadImages(loadMoreCount));
+        
+        buttonContainer.appendChild(button);
+        imageGallery.parentNode.insertBefore(buttonContainer, imageGallery.nextSibling);
+    }
 
     // Initial load
-    loadNextBatch();
-    observeLastImage();
+    loadImages(initialLoadCount);
+    createLoadMoreButton();
 });
