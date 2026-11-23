@@ -185,6 +185,17 @@ button {
     object-fit: cover;
 }
 
+.hero-caption {
+    position: absolute;
+    left: var(--gutter);
+    bottom: 28px;
+    font-size: clamp(13px, 1.4vw, 16px);
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7);
+}
+
 .hero-controls {
     position: absolute;
     right: var(--gutter);
@@ -297,6 +308,65 @@ button {
 .btn:hover {
     background: var(--accent);
     color: var(--bg);
+}
+
+/* Sport tiles (home) */
+
+.sport-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sport-tile {
+    position: relative;
+    display: block;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    background: var(--bg-soft);
+    text-decoration: none;
+}
+
+.sport-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.sport-tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0) 55%);
+}
+
+.sport-tile:hover img {
+    transform: scale(1.04);
+}
+
+.sport-name,
+.sport-count {
+    position: absolute;
+    z-index: 1;
+    left: 16px;
+}
+
+.sport-name {
+    bottom: 34px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.sport-count {
+    bottom: 12px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: #cfcfcf;
 }
 
 /* Profile */

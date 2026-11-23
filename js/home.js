@@ -96,3 +96,44 @@ document.addEventListener("DOMContentLoaded", () => {
     show(0);
     start();
 });
+
+// Home page sport tiles: one cover per sport, linking to the filtered portfolio.
+document.addEventListener("DOMContentLoaded", () => {
+    const list = document.getElementById("sportTiles");
+    if (!list || !window.PHOTOS) return;
+
+    const covers = new Map();
+    const counts = {};
+    window.PHOTOS.forEach((p) => {
+        if (p.category === "other") return;
+        if (!covers.has(p.category)) covers.set(p.category, p);
+        counts[p.category] = (counts[p.category] || 0) + 1;
+    });
+
+    const countEls = [];
+    covers.forEach((p, cat) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.className = "sport-tile";
+        a.href = "portfolio.html#" + cat;
+        const img = document.createElement("img");
+        img.src = `photos/thumb/${p.id}.webp`;
+        img.alt = "";
+        img.loading = "lazy";
+        img.decoding = "async";
+        const name = document.createElement("span");
+        name.className = "sport-name";
+        name.dataset.i18n = "cat_" + cat;
+        name.textContent = t("cat_" + cat);
+        const count = document.createElement("span");
+        count.className = "sport-count";
+        countEls.push([count, counts[cat]]);
+        a.append(img, name, count);
+        li.appendChild(a);
+        list.appendChild(li);
+    });
+
+    const labelCounts = () => countEls.forEach(([el, n]) => (el.textContent = t("sports_count", { n })));
+    document.addEventListener("langchange", labelCounts);
+    labelCounts();
+});

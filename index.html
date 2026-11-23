@@ -52,16 +52,19 @@
                 <img src="photos/large/swimming-4.webp"
                      srcset="photos/thumb/swimming-4.webp 900w, photos/large/swimming-4.webp 2400w" sizes="100vw"
                      width="2400" height="1621" alt="" fetchpriority="high">
+                <figcaption class="hero-caption" data-i18n="cat_swimming"></figcaption>
             </figure>
             <figure class="hero-slide">
                 <img src="photos/large/triathlon-4.webp"
                      srcset="photos/thumb/triathlon-4.webp 900w, photos/large/triathlon-4.webp 2400w" sizes="100vw"
                      width="2400" height="1601" alt="" loading="lazy">
+                <figcaption class="hero-caption" data-i18n="cat_triathlon"></figcaption>
             </figure>
             <figure class="hero-slide">
                 <img src="photos/large/rugby-7.webp"
                      srcset="photos/thumb/rugby-7.webp 900w, photos/large/rugby-7.webp 2400w" sizes="100vw"
                      width="2400" height="1600" alt="" loading="lazy">
+                <figcaption class="hero-caption" data-i18n="cat_rugby"></figcaption>
             </figure>
 
             <div class="hero-controls">
@@ -85,6 +88,15 @@
                     <span data-i18n="view_works">作品を見る</span>
                     <span aria-hidden="true">&rarr;</span>
                 </a>
+            </div>
+        </section>
+
+        <!-- Sports -->
+        <section class="section">
+            <div class="container">
+                <p class="eyebrow" data-i18n="sports_eyebrow">Sports</p>
+                <h2 class="heading" data-i18n="sports_title">撮影競技</h2>
+                <ul class="sport-tiles" id="sportTiles"></ul>
             </div>
         </section>
 
@@ -119,6 +131,7 @@
     </footer>
 
     <script src="js/i18n.js"></script>
+    <script src="js/photos.js"></script>
     <script src="js/home.js"></script>
 </body>
 </html>
