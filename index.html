@@ -3,159 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>satoj Photography</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <script src="js/i18n.js" defer></script>
-    <style>
-        .slider img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-        .active-dot {
-            background-color: #717171;
-        }
-        .hidden { display: none; }
-        [data-i18n] {
-            white-space: nowrap;
-        }
-        [data-i18n="profile_content"] {
-            white-space: pre-line;
-        }
-        .nav-button {
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-        .nav-button:hover {
-            opacity: 1;
-        }
-        @media (max-width: 640px) {
-            [data-i18n] {
-                white-space: normal;
-                word-break: break-word;
-            }
-            .header-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .nav-content {
-                margin-top: 1rem;
-            }
-            .slider img {
-                max-height: 50vh;
-            }
-            .nav-button {
-                padding: 0.5rem;
-            }
-        }
-    </style>
-</head>
-<body class="bg-white text-gray-800 font-sans">
+    <title>satoj Photography | スポーツ写真家</title>
+    <meta name="description" content="スポーツ写真家 satoj のポートフォリオ。水泳、ラグビー、ボート、トライアスロンなど、競技の一瞬を捉えた作品を掲載しています。日本スポーツ写真協会 会員。">
+    <link rel="canonical" href="https://satojwork.com/">
+    <meta name="theme-color" content="#0e0e0e">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-    <!-- Header -->
-    <header class="bg-gray-100 py-4">
-        <div class="container mx-auto px-4">
-            <div class="header-content flex flex-col sm:flex-row justify-between items-center">
-                <h1 class="text-lg font-bold mb-4 sm:mb-0"><a href="index.html" class="text-gray-800 hover:underline">satoj Photography</a></h1>
-                <nav class="nav-content flex items-center space-x-4">
-                    <ul class="flex space-x-4">
-                        <li><a href="index.html" class="hover:text-gray-600" data-i18n="nav_home">ホーム</a></li>
-                        <li><a href="portfolio.html" class="hover:text-gray-600" data-i18n="nav_portfolio">ポートフォリオ</a></li>
-                    </ul>
-                    <button id="languageToggle" class="ml-4 px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" data-i18n="switch_lang">English</button>
-                </nav>
-            </div>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="satoj Photography">
+    <meta property="og:title" content="satoj Photography | スポーツ写真家">
+    <meta property="og:description" content="競技の一瞬を捉えたスポーツ写真のポートフォリオ。">
+    <meta property="og:url" content="https://satojwork.com/">
+    <meta property="og:image" content="https://satojwork.com/photos/og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preload" as="image" href="photos/large/swimming-4.webp" imagesrcset="photos/thumb/swimming-4.webp 900w, photos/large/swimming-4.webp 2400w" imagesizes="100vw">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "satoj",
+        "jobTitle": "Sports Photographer",
+        "url": "https://satojwork.com/",
+        "memberOf": { "@type": "Organization", "name": "日本スポーツ写真協会" }
+    }
+    </script>
+</head>
+<body data-title-key="doc_title_home">
+
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="logo">satoj <span>Photography</span></a>
+            <nav class="nav" aria-label="Main">
+                <a href="index.html" aria-current="page" data-i18n="nav_home">ホーム</a>
+                <a href="portfolio.html" data-i18n="nav_portfolio">ポートフォリオ</a>
+                <a href="#contact" class="nav-contact" data-i18n="nav_contact">お問い合わせ</a>
+                <button id="languageToggle" class="lang-toggle" type="button" data-i18n="switch_lang" data-i18n-attr="aria-label:switch_lang_label">EN</button>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Section -->
-    <main class="container mx-auto px-4 py-8 sm:py-16">
-        <!-- Intro Section -->
-        <section class="text-center mb-8 sm:mb-16">
-            <h1 class="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6" data-i18n="main_title">受賞歴のあるフォトグラフィー</h1>
-            <p class="text-base sm:text-lg text-gray-600 px-4" data-i18n="main_description">
-                完璧な瞬間を捉えることが私の情熱です。10年以上の経験を持つスポーツ写真家として、
-                ストーリーを語る瞬間を捉えることを専門としています。日本スポーツ写真協会の会員として、
-                私の作品は国内外で受賞し、高く評価されています。
-            </p>
-        </section>
+    <main>
+        <!-- Hero slideshow -->
+        <section class="hero" aria-roledescription="carousel" data-i18n-attr="aria-label:hero_label" aria-label="作品スライドショー" tabindex="-1">
+            <figure class="hero-slide is-active">
+                <img src="photos/large/swimming-4.webp"
+                     srcset="photos/thumb/swimming-4.webp 900w, photos/large/swimming-4.webp 2400w" sizes="100vw"
+                     width="2400" height="1621" alt="" fetchpriority="high">
+            </figure>
+            <figure class="hero-slide">
+                <img src="photos/large/triathlon-4.webp"
+                     srcset="photos/thumb/triathlon-4.webp 900w, photos/large/triathlon-4.webp 2400w" sizes="100vw"
+                     width="2400" height="1601" alt="" loading="lazy">
+            </figure>
+            <figure class="hero-slide">
+                <img src="photos/large/rugby-7.webp"
+                     srcset="photos/thumb/rugby-7.webp 900w, photos/large/rugby-7.webp 2400w" sizes="100vw"
+                     width="2400" height="1600" alt="" loading="lazy">
+            </figure>
 
-        <!-- Slider Section -->
-        <section class="slider relative">
-            <div id="slides-container" class="flex overflow-hidden">
-                <div class="slide hidden">
-                    <img src="image/水泳４.JPG" alt="Swimming action shot">
-                </div>
-                <div class="slide hidden">
-                    <img src="image/トライアスロン４.JPG" alt="Triathlon">
-                </div>
-                <div class="slide hidden">
-                    <img src="image/ラグビー７.JPG" alt="Rugby match">
-                </div>
-            </div>
-            <!-- Navigation -->
-            <button id="prev" class="nav-button absolute top-1/2 left-4 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full">&larr;</button>
-            <button id="next" class="nav-button absolute top-1/2 right-4 transform -translate-y-1/2 bg-gray-700 text-white px-3 py-1 rounded-full">&rarr;</button>
-            <!-- Dots -->
-            <div class="flex justify-center mt-4">
-                <span class="dot h-3 w-3 rounded-full bg-gray-400 mx-2 cursor-pointer"></span>
-                <span class="dot h-3 w-3 rounded-full bg-gray-400 mx-2 cursor-pointer"></span>
-                <span class="dot h-3 w-3 rounded-full bg-gray-400 mx-2 cursor-pointer"></span>
+            <div class="hero-controls">
+                <button class="hero-btn hero-prev" type="button" data-i18n-attr="aria-label:hero_prev" aria-label="前の写真">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <div class="hero-dots"></div>
+                <button class="hero-btn hero-next" type="button" data-i18n-attr="aria-label:hero_next" aria-label="次の写真">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </button>
             </div>
         </section>
 
-        <!-- Profile Section -->
-        <section class="max-w-4xl mx-auto mt-8 sm:mt-16 px-4">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6" data-i18n="profile_title">プロフィール</h2>
-            <p class="text-base sm:text-lg" data-i18n="profile_content">
-                2014年 JCII主催 水谷塾入塾<br>
-                2017年 同塾卒業<br>
-                2018年〜2021年 JPS展入選<br>
-                2020年 JPS展優秀賞<br>
-                2023年 二科会 写真部 会友<br>
-                一般社団法人 日本スポーツ写真協会 会員<br>
-                日本ローイング協会 広報委員スタッフ
-            </p>
+        <!-- About -->
+        <section class="section">
+            <div class="container">
+                <p class="eyebrow" data-i18n="about_eyebrow">About</p>
+                <h1 class="heading" data-i18n="main_title">受賞歴のあるフォトグラフィー</h1>
+                <p class="lead" data-i18n="main_description">完璧な瞬間を捉えることが私の情熱です。10年以上の経験を持つスポーツ写真家として、ストーリーを語る瞬間を捉えることを専門としています。日本スポーツ写真協会の会員として、私の作品は国内外で受賞し、高く評価されています。</p>
+                <a class="btn" href="portfolio.html">
+                    <span data-i18n="view_works">作品を見る</span>
+                    <span aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Profile -->
+        <section class="section">
+            <div class="container profile-grid">
+                <div>
+                    <p class="eyebrow" data-i18n="profile_eyebrow">Profile</p>
+                    <h2 class="heading" data-i18n="profile_title">プロフィール</h2>
+                </div>
+                <ul class="career">
+                    <li><time datetime="2014">2014</time><span data-i18n="career_1">JCII主催 水谷塾 入塾</span></li>
+                    <li><time datetime="2017">2017</time><span data-i18n="career_2">同塾 卒業</span></li>
+                    <li><span class="year">2018 – 2021</span><span data-i18n="career_3">JPS展 入選</span></li>
+                    <li><time datetime="2020">2020</time><span data-i18n="career_4">JPS展 優秀賞</span></li>
+                    <li><time datetime="2023">2023</time><span data-i18n="career_5">二科会 写真部 会友</span></li>
+                    <li><span class="year" data-i18n="career_now">現在</span><span data-i18n="career_6">一般社団法人 日本スポーツ写真協会 会員</span></li>
+                    <li><span class="year" data-i18n="career_now">現在</span><span data-i18n="career_7">日本ローイング協会 広報委員スタッフ</span></li>
+                </ul>
+            </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-200 py-6 text-center">
-        <h2 class="text-xl sm:text-2xl font-bold mb-4" data-i18n="contact_title">Contact</h2>
-        <p>Email: <a href="mailto:lilytorose1055@gmail.com" class="text-blue-600 hover:underline">lilytorose1055@gmail.com</a></p>
+    <footer class="site-footer" id="contact">
+        <div class="container">
+            <p class="eyebrow" data-i18n="contact_eyebrow">Contact</p>
+            <h2 class="heading" data-i18n="contact_title">お問い合わせ</h2>
+            <p class="lead" data-i18n="contact_text">撮影のご依頼・作品の使用に関するご相談は、メールにてお気軽にご連絡ください。</p>
+            <p style="margin-top: 28px;"><a class="contact-mail" href="mailto:lilytorose1055@gmail.com">lilytorose1055@gmail.com</a></p>
+            <p class="copyright">&copy; satoj Photography. All rights reserved.</p>
+        </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script>
-        let slideIndex = 0;
-        const slides = document.querySelectorAll(".slide");
-        const dots = document.querySelectorAll(".dot");
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle("hidden", i !== index);
-                dots[i].classList.toggle("active-dot", i === index);
-            });
-        }
-
-        function nextSlide() {
-            slideIndex = (slideIndex + 1) % slides.length;
-            showSlide(slideIndex);
-        }
-
-        function prevSlide() {
-            slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-            showSlide(slideIndex);
-        }
-
-        document.getElementById("next").addEventListener("click", nextSlide);
-        document.getElementById("prev").addEventListener("click", prevSlide);
-        dots.forEach((dot, i) => dot.addEventListener("click", () => showSlide(i)));
-
-        // 初期スライド表示
-        showSlide(slideIndex);
-    </script>
+    <script src="js/i18n.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>

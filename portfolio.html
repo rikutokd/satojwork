@@ -3,104 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <!-- Font Awesome & Lightbox -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="css/lightbox.css" rel="stylesheet">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
-    <script src="js/i18n.js" defer></script>
-    <script src="js/script.js" defer></script>
-    <style>
-        [data-i18n] {
-            white-space: nowrap;
-        }
-        [data-i18n="profile_content"] {
-            white-space: pre-line;
-        }
-        @media (max-width: 640px) {
-            .nav-links {
-                display: none;
-            }
-            .mobile-menu {
-                display: block;
-            }
-            /* モバイル表示時のテキスト調整 */
-            [data-i18n] {
-                white-space: normal;
-                word-break: break-word;
-            }
-            .header-content {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .nav-content {
-                margin-top: 1rem;
-            }
-            .portfolio-description {
-                padding: 0 1rem;
-            }
-            .image-gallery {
-                gap: 0.5rem;
-            }
-            .image-container {
-                margin: 0.25rem;
-            }
-        }
-        .image-container {
-            aspect-ratio: 4/3;
-            overflow: hidden;
-        }
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
+    <title>ポートフォリオ | satoj Photography</title>
+    <meta name="description" content="スポーツ写真家 satoj の作品集。水泳、ラグビー、ボート、トライアスロン、ホッケー、スピードスケート、バスケットボールなど。">
+    <link rel="canonical" href="https://satojwork.com/portfolio.html">
+    <meta name="theme-color" content="#0e0e0e">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="satoj Photography">
+    <meta property="og:title" content="ポートフォリオ | satoj Photography">
+    <meta property="og:description" content="競技の一瞬を捉えたスポーツ写真のポートフォリオ。">
+    <meta property="og:url" content="https://satojwork.com/portfolio.html">
+    <meta property="og:image" content="https://satojwork.com/photos/og.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-white text-gray-800 font-sans">
-    <!-- Header -->
-    <header class="bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-8 py-4">
-            <div class="header-content flex flex-col sm:flex-row items-center justify-between">
-                <h1 class="text-lg font-bold mb-4 sm:mb-0"><a href="index.html" class="text-gray-800 hover:text-gray-600">satoj Photography</a></h1>
-                <nav class="nav-content flex items-center space-x-4">
-                    <ul class="flex space-x-4 nav-links">
-                        <li><a href="index.html" class="text-gray-800 hover:text-gray-600" data-i18n="nav_home">ホーム</a></li>
-                        <li><a href="portfolio.html" class="text-gray-800 hover:text-gray-600" data-i18n="nav_portfolio">ポートフォリオ</a></li>
-                    </ul>
-                    <button id="languageToggle" class="ml-4 px-3 py-1 bg-gray-200 rounded hover:bg-gray-300" data-i18n="switch_lang">English</button>
-                </nav>
-            </div>
+<body data-title-key="doc_title_portfolio">
+
+    <header class="site-header">
+        <div class="container">
+            <a href="index.html" class="logo">satoj <span>Photography</span></a>
+            <nav class="nav" aria-label="Main">
+                <a href="index.html" data-i18n="nav_home">ホーム</a>
+                <a href="portfolio.html" aria-current="page" data-i18n="nav_portfolio">ポートフォリオ</a>
+                <a href="#contact" class="nav-contact" data-i18n="nav_contact">お問い合わせ</a>
+                <button id="languageToggle" class="lang-toggle" type="button" data-i18n="switch_lang" data-i18n-attr="aria-label:switch_lang_label">EN</button>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
-        <section class="text-center mb-8 sm:mb-12">
-            <h1 class="text-3xl sm:text-4xl font-bold" data-i18n="portfolio_heading">ポートフォリオ</h1>
-            <p class="text-base sm:text-lg mt-4" data-i18n="portfolio_subtitle">スポーツの美しさを捉える</p>
+    <main class="container">
+        <section class="page-head">
+            <p class="eyebrow">Works</p>
+            <h1 class="heading" data-i18n="portfolio_heading">ポートフォリオ</h1>
+            <p class="lead" data-i18n="portfolio_subtitle">スポーツの美しさ、強さ、そして感情を捉える</p>
         </section>
 
-        <section class="text-center mb-8 sm:mb-16">
-            <img src="image/camera.jpg" alt="Camera lens, representing photography portfolio" class="w-48 h-48 sm:w-64 sm:h-64 mx-auto rounded-full shadow-lg">
-            <p class="text-base sm:text-lg mt-4 sm:mt-6 portfolio-description" data-i18n="portfolio_description">
-                私の写真ポートフォリオへようこそ！日本スポーツ写真協会の会員として、スポーツの美しさ、強さ、そして感情を捉えることを専門としています。
-            </p>
-        </section>
+        <ul class="filters" id="filters" data-i18n-attr="aria-label:filter_label" aria-label="競技で絞り込む"></ul>
 
-        <!-- Image Gallery -->
-        <section id="imageGallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 image-gallery">
-            <!-- JavaScriptで動的に追加 -->
-        </section>
+        <ul class="gallery" id="gallery" aria-live="polite"></ul>
+
+        <noscript><p class="lead">写真の表示には JavaScript を有効にしてください。 / Please enable JavaScript to view the photographs.</p></noscript>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-200 py-6 text-center">
-        <h2 class="text-xl sm:text-2xl font-bold mb-4" data-i18n="contact_title">Contact</h2>
-        <p>Email: <a href="mailto:lilytorose1055@gmail.com" class="text-blue-600 hover:underline">lilytorose1055@gmail.com</a></p>
+    <footer class="site-footer" id="contact">
+        <div class="container">
+            <p class="eyebrow" data-i18n="contact_eyebrow">Contact</p>
+            <h2 class="heading" data-i18n="contact_title">お問い合わせ</h2>
+            <p class="lead" data-i18n="contact_text">撮影のご依頼・作品の使用に関するご相談は、メールにてお気軽にご連絡ください。</p>
+            <p style="margin-top: 28px;"><a class="contact-mail" href="mailto:lilytorose1055@gmail.com">lilytorose1055@gmail.com</a></p>
+            <p class="copyright">&copy; satoj Photography. All rights reserved.</p>
+        </div>
     </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" data-i18n-attr="aria-label:lb_label" aria-label="写真の拡大表示">
+        <div class="lb-top">
+            <span class="lb-counter"></span>
+            <button class="lb-btn lb-close" type="button" data-i18n-attr="aria-label:lb_close" aria-label="閉じる">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+        </div>
+        <div class="lb-stage">
+            <img alt="">
+            <button class="lb-btn lb-prev" type="button" data-i18n-attr="aria-label:lb_prev" aria-label="前の写真">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="lb-btn lb-next" type="button" data-i18n-attr="aria-label:lb_next" aria-label="次の写真">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+        </div>
+        <p class="lb-caption"></p>
+    </div>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/photos.js"></script>
+    <script src="js/gallery.js"></script>
 </body>
 </html>
