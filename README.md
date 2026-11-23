@@ -29,3 +29,5 @@ https://satojwork.com （GitHub Pages）
 3. `js/photos.js` に 1 行追加する: `["rugby-8", "rugby", 幅, 高さ],`
 
 新しい競技カテゴリを作る場合は、`js/i18n.js` の `ja` / `en` 両方に `cat_カテゴリ名` を追加してください。
+
+CSS / JS を変更したら、`index.html` と `portfolio.html` で読み込んでいる `?v=2` の数字を上げてください（ブラウザに古いファイルが残るのを防ぎます）。
