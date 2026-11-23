@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     start();
 });
 
-// Home page sport tiles: one cover per sport, linking to the filtered portfolio.
+// Home page sport lanes: one row per sport, linking to the filtered portfolio.
 document.addEventListener("DOMContentLoaded", () => {
     const list = document.getElementById("sportTiles");
     if (!list || !window.PHOTOS) return;
@@ -110,30 +110,47 @@ document.addEventListener("DOMContentLoaded", () => {
         counts[p.category] = (counts[p.category] || 0) + 1;
     });
 
-    const countEls = [];
+    const total = document.getElementById("sportCount");
+    if (total) total.textContent = covers.size;
+
+    const metas = [];
     covers.forEach((p, cat) => {
         const li = document.createElement("li");
         const a = document.createElement("a");
-        a.className = "sport-tile";
+        a.className = "lane";
         a.href = "portfolio.html#" + cat;
+
+        const text = document.createElement("span");
+        text.className = "lane-text";
+        const name = document.createElement("span");
+        name.className = "sport-name";
+        name.dataset.i18n = "cat_" + cat;
+        name.textContent = t("cat_" + cat);
+        const meta = document.createElement("span");
+        meta.className = "lane-meta";
+        text.append(name, meta);
+        metas.push([meta, cat]);
+
+        const photo = document.createElement("span");
+        photo.className = "lane-photo";
         const img = document.createElement("img");
         img.src = `photos/thumb/${p.id}.webp`;
         img.alt = "";
         img.loading = "lazy";
         img.decoding = "async";
-        const name = document.createElement("span");
-        name.className = "sport-name";
-        name.dataset.i18n = "cat_" + cat;
-        name.textContent = t("cat_" + cat);
-        const count = document.createElement("span");
-        count.className = "sport-count";
-        countEls.push([count, counts[cat]]);
-        a.append(img, name, count);
+        photo.appendChild(img);
+
+        a.append(text, photo);
         li.appendChild(a);
         list.appendChild(li);
     });
 
-    const labelCounts = () => countEls.forEach(([el, n]) => (el.textContent = t("sports_count", { n })));
-    document.addEventListener("langchange", labelCounts);
-    labelCounts();
+    // Under the name: the sport in the other language, then the photo count.
+    const labelMeta = () =>
+        metas.forEach(([el, cat]) => {
+            const other = translations[currentLang === "ja" ? "en" : "ja"]["cat_" + cat];
+            el.textContent = `${other}\u2003${t("sports_count", { n: counts[cat] })}`;
+        });
+    document.addEventListener("langchange", labelMeta);
+    labelMeta();
 });
